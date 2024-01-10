@@ -1,45 +1,37 @@
+import Categories from "./components/categories/categories.component"
+
+const categories = [
+  {
+    "id": 1,
+    "title": "hats",
+    "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
+  },
+  {
+    "id": 2,
+    "title": "jackets",
+    "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
+  },
+  {
+    "id": 3,
+    "title": "sneakers",
+    "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
+  },
+  {
+    "id": 4,
+    "title": "womens",
+    "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
+  },
+  {
+    "id": 5,
+    "title": "mens",
+    "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
+  }
+]
+
 const App = () => {
 
-  const categories = [
-    {
-      id: 1,
-      title: 'Hats',
-      backgroundImgSource: ''
-    },
-    {
-      id: 2,
-      title: 'Jackets',
-      backgroundImgSource: ''
-    },
-    {
-      id: 3,
-      title: 'PC Gear',
-      backgroundImgSource: ''
-    },
-    {
-      id: 4,
-      title: 'Funkos',
-      backgroundImgSource: ''
-    },
-    {
-      id: 5,
-      title: 'Action Figures',
-      backgroundImgSource: ''
-    },
-  ]
-
   return (
-    <div className="categories-container">
-      {categories.map(({id, title}) => (
-        <div key={id} className="category-container">
-        <div className="category-background-img"/>
-        <div className="category-body-container">
-          <h2>{title}</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      ))}
-    </div>
+    <Categories categories={categories}/>
   );
 }
 
