@@ -5,26 +5,28 @@ import {
   signInWithGooglePopup,
   signInWithGoogleRedirect,
   upsertAuthUser,
-} from "../../utils/firebase.utils";
-import "./sign-in.styles.scss";
+} from "../../utils/firebase/firebase.utils";
+
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
+import Button from "../../components/button/button.component";
+
+import "./sign-in.styles.scss";
 
 const SignIn = () => {
-
   try {
     useEffect(() => {
-      async function fetchData() {
+      async function handleRedirect() {
         const response = await getRedirectResult(auth);
         if (response) {
           upsertAuthUser(response.user);
         }
       }
-      fetchData();
+      handleRedirect();
     }, []);
-  } catch(error){
+  } catch (error) {
     console.log(error);
   }
-  
+
   const logGoogleUserPopup = async () => {
     const { user } = await signInWithGooglePopup();
     upsertAuthUser(user);
@@ -38,10 +40,10 @@ const SignIn = () => {
     <div>
       <h1>Sign-in Page</h1>
       {/* <button onClick={logGoogleUserPopup}>Sign in with Google Popup</button> */}
-      <button onClick={logGoogleUserRedirect}>
+      <Button type="submit" buttonType="google" onClick={logGoogleUserRedirect}>
         Sign in with Google
-      </button>
-      <SignUpForm/>
+      </Button>
+      <SignUpForm />
     </div>
   );
 };
