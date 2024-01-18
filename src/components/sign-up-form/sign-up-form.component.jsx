@@ -1,13 +1,14 @@
 import { useState } from "react";
+
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+
 import {
   createAuthUserWithEmailAndPassowrd,
   upsertAuthUser,
 } from "../../utils/firebase/firebase.utils";
-import FormInput from "../form-input/form-input.component";
-import Button from '../button/button.component'
 
-import './sign-up-form.styles.scss'
-
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -20,6 +21,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const resetFormFields = () => setFormFields(defaultFormFields);
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -50,17 +52,11 @@ const SignUpForm = () => {
     }
   }
 
-  const resetFormFields = () => setFormFields(defaultFormFields);
-
   return (
     <div className="sign-up-container">
       <h2>Não tem uma conta?</h2>
-      <span>Cadastre-se com seu e-mail,</span>
-      <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
-      >
+      <span>Registre-se com seu e-mail</span>
+      <form onSubmit={handleSubmit}>
         <FormInput
           label="Nome"
           type="text"
@@ -96,7 +92,7 @@ const SignUpForm = () => {
           minLength={6}
         />
 
-        <Button type="submit">Salvar</Button>
+        <Button type="submit">Registrar</Button>
       </form>
     </div>
   );
