@@ -70,13 +70,11 @@ export const upsertAuthUser = async (userAuth) => {
 
 export const createAuthUserWithEmailAndPassowrd = async (email, password) => {
   if (!email || !password) return;
-  console.log("calling Firebase Signup");
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const signAuthUserInWithEmailAndPassowrd = async (email, password) => {
   if (!email || !password) return;
-  console.log("calling Firebase Signup");
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
