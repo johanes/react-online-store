@@ -55,11 +55,9 @@ const SignUpForm = () => {
   return (
     <div className="sign-up-container">
       <h2>Não tem uma conta?</h2>
-      <span>Cadastre-se com seu e-mail,</span>
+      <span>Registre-se com seu e-mail</span>
       <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
+        onSubmit={handleSubmit}
       >
         <FormInput
           label="Nome"
@@ -96,7 +94,7 @@ const SignUpForm = () => {
           minLength={6}
         />
 
-        <Button type="submit">Salvar</Button>
+        <Button type="submit">Registrar</Button>
       </form>
     </div>
   );
